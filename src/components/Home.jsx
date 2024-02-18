@@ -139,7 +139,7 @@ function Home() {
 
 
       } else {
-        window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`
+        window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login`
       }
 
 
@@ -221,7 +221,7 @@ function Home() {
 
   useEffect(function () {
     if (!isLoggedIn) {
-      window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`
+      window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login`
     }
   }, [isLoggedIn])
 
