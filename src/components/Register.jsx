@@ -36,7 +36,7 @@ function Register() {
                 setLoading(false);
 
                 if (res.status == 201) {
-                    window.location.href = `${import.meta.env.VITE_ROOT_URL}user/login/`
+                    window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`
                 }
             })
             .catch((err) => {
