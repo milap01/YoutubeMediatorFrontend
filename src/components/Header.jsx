@@ -16,7 +16,7 @@ function Header() {
 
     if (encRefreshCookie){
       document.cookie = "refresh_token=;expires = Thu, 01 Jan 1970 00:00:00 UTC";
-      window.location.href = `${import.meta.env.VITE_ROOT_URL}user/login/`
+      window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`
 
     }
 
