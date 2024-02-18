@@ -19,7 +19,7 @@ function Error() {
     <div>
       <h1 className='text-white text-4xl text-center' >Error</h1>
      <button onClick={goToHomePage} className='text-white' >Go to home page</button>
-      </div>
+    </div>
   )
 }
 
