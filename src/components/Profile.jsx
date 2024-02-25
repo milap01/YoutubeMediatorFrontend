@@ -17,21 +17,23 @@ function Profile() {
 
         setLoading(true);
         const cookie = Cookies.get('access_token');
-        
 
         const userInfo = async function () {
 
             try {
-                const response = await axiosApi.get('api/user-profile/', {
+                const response = await axiosApi.get('/api/user-profile/', {
                     headers: { Authorization: `Bearer ${cookie}` }
                 })
-
                 setEmail(response.data.email);
                 setFullName(response.data.full_name);
                 setType(response.data.type);
                 setAvatar(response.data.avatar)
                 setLoading(false);
             } catch (err) {
+                
+                if (err.response.status == 401){
+                    window.location.href = import.meta.env.VITE_ROOT_URL
+                }
                 setLoading(false);
                 
             }
@@ -49,7 +51,7 @@ function Profile() {
         setLoading(true);
         try {
         const cookie = Cookies.get('access_token');
-        const response = await axiosApi.put('api/user-profile/',{
+        const response = await axiosApi.put('/api/user-profile/',{
             "full_name" : full_name,
             "email" : email,
             "avatar" : avatar
@@ -64,7 +66,9 @@ function Profile() {
         setLoading(false);
             
         } catch (error) {
-            
+            if (error.response.status == 401){
+                window.location.href = import.meta.env.VITE_ROOT_URL
+            }
             setLoading(false);
             setError(true);
         }
@@ -114,23 +118,14 @@ function Profile() {
 
                 <div className='mt-6 flex flex-col p-4 ' >
 
-               
-
                     <input type='text' className='m-3 p-3 pr-16 text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono' placeholder='Full Name' value={full_name} onChange={(e) => setFullName(e.target.value)} />
 
                     <input type='email' className='m-3 p-3  text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono'  placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                   
-                   
-
-                   
+        
                     <button onClick={handleSubmit} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Update </button>
 
 
                 </div>
-
-
-                
-                
 
             </div>
 

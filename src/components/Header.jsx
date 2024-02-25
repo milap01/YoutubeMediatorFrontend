@@ -3,82 +3,123 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png';
 import Cookies from 'js-cookie';
 import { axiosApi } from '../api/axios';
-import { AES, enc } from 'crypto-js';
-
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { accessToken, loadingAtom, loginAtom } from '../store/atoms/auth';
+import { AES } from 'crypto-js';
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
 
+  const navigateTo = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
-  const [type,setType] = useState(true);
+  const [type, setType] = useState(true);
+  const isLoggedIn = useRecoilValue(loginAtom);
+  const [accessTokenValue, setAccessToken] = useRecoilState(accessToken);
+  const [loading,setLoading] = useRecoilState(loadingAtom);
 
-  function handleLogout(){
+  useEffect(() => {
+    if (!accessTokenValue) {
+      const refresh_cookie = Cookies.get('refresh_token');
+  
+      if (refresh_cookie) {
+  
+        try {
+  
+            const bytes = AES.decrypt(refresh_cookie, import.meta.env.VITE_SECRET_PASSWORD);
+  
+            const cookie = bytes.toString(enc.Utf8);
+  
+            const getRefresh = async () => {
+  
+            const response = await axiosApi.post('/api/token/refresh/', {
+              "refresh": cookie,
+            }
+            )
+  
+            Cookies.set('access_token', response.data.access, { expires: 1 });
+  
+            setAccessToken(true)
+  
+            setLoading(false)
+  
+            window.location.href = import.meta.env.VITE_ROOT_URL
+          }
+  
+          getRefresh()
+  
+        } catch (error) {
+          setLoading(false);
+        }
+      }else{
+        navigateTo('/user/login')
+      }
+  
+  
+  
+    }
+  },[accessTokenValue])
+
+
+  if (!isLoggedIn) {
+    window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`
+  }
+
+  function handleLogout() {
     const encRefreshCookie = Cookies.get('refresh_token');
 
-    if (encRefreshCookie){
+    if (encRefreshCookie) {
       document.cookie = "refresh_token=;expires = Thu, 01 Jan 1970 00:00:00 UTC";
-      window.location.href = `${import.meta.env.VITE_ROOT_URL}user/login/`
-
+      document.cookie = "access_token=;expires=Thu, 01 Jan 1970 00:00:00 UTC"
+      localStorage.setItem('path', window.location.href);
+      window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
     }
 
   }
 
-  function getCredentials(){
-  
+  function getCredentials() {
+    const user = localStorage.getItem('email')
+    if (user){
+      window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/authorize/${user}`;
 
-      const urlString = import.meta.env.VITE_URL;
-      const url = new URL(urlString);
-      url.searchParams.append('scope',import.meta.env.VITE_SCOPES);
-      url.searchParams.append('access_type','offline');
-      url.searchParams.append('include_granted_scope',true);
-      url.searchParams.append('state','state_parameter_pass_through_value');
-      url.searchParams.append('redirect_uri',import.meta.env.VITE_REDIRECT_URI);
-      url.searchParams.append('response_type','code');
-      url.searchParams.append('client_id',import.meta.env.VITE_CLIENT_ID);
-
-      window.location.href = url
-
-      
-   
-
-    getData()
+    } 
+    return;
   }
 
 
   useEffect(() => {
+    
+
+    const userInfo = async function () {
+
+      try {
         const cookie = Cookies.get('access_token');
+        const response = await axiosApi.get('/api/user-profile/', {
+          headers: { Authorization: `Bearer ${cookie}` }
+        })
 
-        const userInfo = async function () {
-
-            try {
-                const response = await axiosApi.get('api/user-profile/', {
-                    headers: { Authorization: `Bearer ${cookie}` }
-                })
-                // const id = response.data.id;
-                // const encryptedId = AES.encrypt(id,import.meta.env.VITE_SECRET_PASSWORD).toString();
-                // localStorage.setItem('user',encryptedId)
-                const userType = response.data.type;
-                localStorage.setItem('full_name',response.data.full_name);
-                localStorage.setItem('email',response.data.email);
-                if (userType == "CREATOR"){
-                  setType(true);
-                  localStorage.setItem('type','CREATOR')
-                }
-
-                if (userType == "EDITOR"){
-                  setType(false);
-                  localStorage.setItem('type','EDITOR');
-                }
-
-                
-               
-            } catch (error) {
-                
-            }
-
+        const userType = response.data.type;
+        localStorage.setItem('full_name', response.data.full_name);
+        localStorage.setItem('email', response.data.email);
+        if (userType == "CREATOR") {
+          setType(true);
+          localStorage.setItem('type', 'CREATOR')
         }
 
-        userInfo();
-  },[])
+        if (userType == "EDITOR") {
+          setType(false);
+          localStorage.setItem('type', 'EDITOR');
+        }
+
+      } catch (error) {
+        if (error.response.status == 401){
+          window.location.href = import.meta.env.VITE_ROOT_URL;
+        }
+      }
+
+    }
+
+    userInfo();
+  }, [])
 
   if (window.innerWidth < 800) {
 
@@ -86,42 +127,37 @@ function Header() {
 
     function breadCrumb() {
       setIsOpen(prev => !prev)
-      // console.log('hii');
-      // console.log(isOpen);
     }
 
     if (isOpen) {
 
       return (<>
 
-        
-          <div className=' w-200  h-72  bg-black  flex flex-col justify-center items-center  font-mono ' >
 
-            <button className="bg-transparent hover:bg-indigo-600 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded " onClick={breadCrumb} >
-              Close
-            </button>
+        <div className=' w-200  h-72  bg-black  flex flex-col justify-center items-center  font-mono ' >
 
-            <Link to='/profile' className=' m-4  mt-6 hover:text-indigo-400 text-white '  >Profile</Link>
+          <button className="bg-transparent hover:bg-indigo-600 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded " onClick={breadCrumb} >
+            Close
+          </button>
 
-            <Link to='/notifications' className=' m-4 ml-5  mt-2 hover:text-indigo-400 text-white '  >Notifications</Link>
+          <Link to='/profile' className=' m-4  mt-6 hover:text-indigo-400 text-white '  >Profile</Link>
 
-            <button onClick={handleLogout} className=' m-4 ml-5  mt-2 hover:text-indigo-400 text-white '  >Logout</button>
+          <Link to='/notifications' className=' m-4 ml-5  mt-2 hover:text-indigo-400 text-white '  >Notifications</Link>
+
+          <button onClick={handleLogout} className=' m-4 ml-5  mt-2 hover:text-indigo-400 text-white '  >Logout</button>
 
 
-            <Link className=' ml-2 mt-1 hover:drop-shadow-xl shadow-indigo-300/40 '  >
+          <Link className=' ml-2 mt-1 hover:drop-shadow-xl shadow-indigo-300/40 '  >
             {
-                type?<button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md text-white ">
+              type ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md text-white ">
                 Credentials
-              </button>:<Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md text-white ">
+              </button> : <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md text-white ">
                 Upload Video
               </Link>
-              }
+            }
 
-            </Link>
+          </Link>
 
-
-
-        
         </div>
 
       </>)
@@ -169,23 +205,23 @@ function Header() {
 
           <div className=' text-white text-lg  m-2 ' >
 
-            <Link to='/profile'  className=' ml-3 mt-4 hover:text-indigo-400 '  >Profile</Link>
+            <Link to='/profile' className=' ml-3 mt-4 hover:text-indigo-400 '  >Profile</Link>
             <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >Notifications</Link>
-            <button onClick={handleLogout}  className='  ml-8  mt-4 hover:text-indigo-400 '  >Logout</button>
+            <button onClick={handleLogout} className='  ml-8  mt-4 hover:text-indigo-400 '  >Logout</button>
 
 
             <Link className=' ml-3 mt-4 hover:drop-shadow-xl shadow-indigo-300/40 '  >
               {
-                type?<button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
-                Credentials
-              </button>:<Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
-                Upload Video
-              </Link>
+                type ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
+                  Credentials
+                </button> : <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
+                  Upload Video
+                </Link>
               }
 
             </Link>
 
-            
+
 
 
           </div>

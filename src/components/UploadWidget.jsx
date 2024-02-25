@@ -12,8 +12,8 @@ function UploadWidget({ email, full_name, setAvatar }) {
 
         cloudinaryRef.current = window.cloudinary;
         widgetRef.current = cloudinaryRef.current.createUploadWidget({
-            cloudName: 'dwyrquguw',
-            uploadPreset: 'pozbqp1k',
+            cloudName: import.meta.env.VITE_CLOUD_NAME,
+            uploadPreset: import.meta.env.VITE_CLOUD_PRESET,
         }, function (error, result) {
             if (error) {
                 return;
@@ -24,7 +24,7 @@ function UploadWidget({ email, full_name, setAvatar }) {
 
                     try {
                         const cookie = Cookies.get('access_token');
-                        const response = await axiosApi.put('api/user-profile/', {
+                        const response = await axiosApi.put('/api/user-profile/', {
                             "full_name": full_name,
                             "email": email,
                             "avatar": result.info.url.toString()
@@ -33,8 +33,6 @@ function UploadWidget({ email, full_name, setAvatar }) {
                         })
 
                         setAvatar(result.info.url.toString())
-
-
 
                     } catch (error) {
                         return;

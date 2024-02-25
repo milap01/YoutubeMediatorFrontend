@@ -21,8 +21,8 @@ function Success() {
 
       const error = url.get('error');
 
-      // console.log(code);
-      // console.log(error);
+      console.log(code);
+      console.log(error);
 
 
       if (!error){
@@ -31,7 +31,7 @@ function Success() {
         try {
           const getTokens = async () => {
             setLoading(false)
-            const response = await axios.post(import.meta.env.VITE_URL,{
+            const response = await axios.post(`https://oauth2.googleapis.com/token`,{
                'code':code,
                'client_id':import.meta.env.VITE_CLIENT_ID,
                'client_secret':import.meta.env.VITE_CLIENT_SECRET,
@@ -55,8 +55,8 @@ function Success() {
 
               if (!access_token || !refresh_token){
                 setLoading(false)
-                window.location.href = import.meta.env.VITE_ROOT_URL
-                return
+                // window.location.href = import.meta.env.VITE_ROOT_URL
+                // return
               }
 
               const saveTokens = await axiosApi.put('api/user-profile/',{
@@ -69,10 +69,10 @@ function Success() {
       
               setLoading(false);
       
-              window.location.href = import.meta.env.VITE_ROOT_URL
+              // window.location.href = import.meta.env.VITE_ROOT_URL
             } catch (error) {
               setLoading(false)
-              window.location.href = import.meta.env.VITE_ROOT_URL
+              // window.location.href = import.meta.env.VITE_ROOT_URL
             }
          }
     
@@ -81,14 +81,14 @@ function Success() {
           
           console.log(error);
           setLoading(false);
-          window.location.href = import.meta.env.VITE_ROOT_URL
+          // window.location.href = import.meta.env.VITE_ROOT_URL
     
          }
 
 
       }else{
         setLoading(false)
-        window.location.href = import.meta.env.VITE_ROOT_URL
+        // window.location.href = import.meta.env.VITE_ROOT_URL
       }
 
      

@@ -5,10 +5,13 @@ import logo from '../assets/logo.png';
 import { axiosApi } from '../api/axios';
 import Cookies from 'js-cookie';
 import { AES, enc } from 'crypto-js';
+import { useNavigate } from 'react-router-dom'
 
 
 
 function Home() {
+
+  const navigateTo = useNavigate()
 
   const isLoggedIn = useRecoilValue(loginAtom);
   const [loading, setLoading] = useRecoilState(loadingAtom);
@@ -21,26 +24,17 @@ function Home() {
   const [previousPage, setPreviousPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
-
- 
-
-
   useEffect(function () {
     if (!accessTokenValue) {
       setAccessTokenValue(false);
     }
   }, [accessTokenValue]);
 
-  
-
   function increaseByValue(number){
     const count = Number(number);
-    console.log(count);
-
 
     const possiblePages =  Math.ceil(totalPages / 6);
-    // console.log(possiblePages);
-
+  
     if(count > possiblePages){
       return;
     }
@@ -74,29 +68,43 @@ function Home() {
 
     if (send) {
       async function cancelFriendRequest(email) {
-        const cookie = Cookies.get('access_token');
 
-        const response = await axiosApi.get(`api/cancel-request/${email}`, {
-          headers: { 'Authorization': `Bearer ${cookie}` }
-        })
-        // console.log(response.data);
-        setSend(false)
-        document.getElementById(email).innerText = "Add Friend"
+        try {
+
+          const cookie = Cookies.get('access_token');
+
+          const response = await axiosApi.get(`/api/cancel-request/${email}`, {
+            headers: { 'Authorization': `Bearer ${cookie}` }
+          })
+          setSend(false)
+          document.getElementById(email).innerText = "Add Friend"
+          
+        } catch (error) {
+          if (error.response.status == 401){
+            window.location.href = import.meta.env.VITE_ROOT_URL;
+          }
+        }
+      
       }
       cancelFriendRequest(email);
     } else {
       async function sendFriendRequest(email) {
 
-        const cookie = Cookies.get('access_token');
+        try {
 
-        const response = await axiosApi.get(`api/send-connection-request/${email}`, {
-          headers: { 'Authorization': `Bearer ${cookie}` }
-        })
-        // console.log(response.data);
-        setSend(true)
-        document.getElementById(email).innerText = 'Cancel Request'
+          const cookie = Cookies.get('access_token');
 
-
+          const response = await axiosApi.get(`/api/send-connection-request/${email}`, {
+            headers: { 'Authorization': `Bearer ${cookie}` }
+          })
+          setSend(true)
+          document.getElementById(email).innerText = 'Cancel Request'
+            
+        } catch (error) {
+          if (error.response.status == 401){
+            window.location.href = import.meta.env.VITE_ROOT_URL;
+          }
+        }
       }
       sendFriendRequest(email)
     }
@@ -119,7 +127,7 @@ function Home() {
           const cookie = bytes.toString(enc.Utf8);
           const getRefresh = async () => {
 
-            const response = await axiosApi.post('api/token/refresh/', {
+            const response = await axiosApi.post('/api/token/refresh/', {
               "refresh": cookie,
             }
             )
@@ -127,19 +135,17 @@ function Home() {
             Cookies.set('access_token', response.data.access, { expires: 1 });
 
             setLoading(false)
+
+            window.location.href = import.meta.env.VITE_ROOT_URL
           }
 
           getRefresh()
 
         } catch (error) {
-          // console.log(error);
           setLoading(false);
         }
-
-
-
       } else {
-        window.location.href = `${import.meta.env.VITE_ROOT_URL}user/login/`
+        navigateTo('/user/login')
       }
 
 
@@ -162,20 +168,17 @@ function Home() {
           setNextPage(res.data.next);
           setPreviousPage(res.data.previous)
 
-          // console.log(res.data);
-
           const userType = localStorage.getItem('type');
 
           if (userType) {
             setType(userType);
           }
-
-
           setLoading(false)
-
-
         } catch (error) {
-          // console.log(error.response.data)
+
+          if (error.response.status == 401){
+            window.location.href = import.meta.env.VITE_ROOT_URL;
+          }
           setLoading(false)
         }
 
@@ -186,15 +189,7 @@ function Home() {
     }
 
 
-
-
-
-  }, [currPage,nextPage,previousPage])
-
-  function reloadPage() {
-    location.reload()
-  }
-
+  }, [currPage,nextPage,previousPage,accessTokenValue,isLoggedIn])
 
   if (!accessTokenValue) {
 
@@ -221,7 +216,7 @@ function Home() {
 
   useEffect(function () {
     if (!isLoggedIn) {
-      window.location.href = `${import.meta.env.VITE_ROOT_URL}user/login/`
+      navigateTo('/user/login')
     }
   }, [isLoggedIn])
 

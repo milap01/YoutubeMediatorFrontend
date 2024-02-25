@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import logo from '../assets/logo.png';
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { authLogin, loadingAtom, loginAtom } from '../store/atoms/auth';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 
 
 function Login() {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isLoggedIn = useRecoilValue(loginAtom);
@@ -28,7 +29,7 @@ function Login() {
 
             setLoading(false);
 
-            window.location.href = import.meta.env.VITE_ROOT_URL
+            window.location.href = localStorage.getItem('path') ? localStorage.getItem('path') : import.meta.env.VITE_ROOT_URL;
 
         })
     }
