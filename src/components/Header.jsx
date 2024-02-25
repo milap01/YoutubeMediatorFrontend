@@ -17,6 +17,12 @@ function Header() {
   const [accessTokenValue, setAccessToken] = useRecoilState(accessToken);
   const [loading,setLoading] = useRecoilState(loadingAtom);
 
+  useEffect(function () {
+    if (!isLoggedIn) {
+      navigateTo('/user/login')
+    }
+  }, [isLoggedIn])
+
   useEffect(() => {
     if (!accessTokenValue) {
       const refresh_cookie = Cookies.get('refresh_token');
