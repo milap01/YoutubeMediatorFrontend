@@ -118,7 +118,7 @@ function Header() {
 
       } catch (error) {
         if (error.response.status == 401){
-          window.location.href = import.meta.env.VITE_ROOT_URL;
+          // window.location.href = import.meta.env.VITE_ROOT_URL;
         }
       }
 
