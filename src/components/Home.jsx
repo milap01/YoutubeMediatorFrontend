@@ -24,11 +24,11 @@ function Home() {
   const [previousPage, setPreviousPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(function () {
-    if (!accessTokenValue) {
-      setAccessTokenValue(false);
-    }
-  }, [accessTokenValue]);
+  // useEffect(function () {
+  //   if (!accessTokenValue) {
+  //     setAccessTokenValue(false);
+  //   }
+  // }, [accessTokenValue]);
 
   function increaseByValue(number){
     const count = Number(number);
