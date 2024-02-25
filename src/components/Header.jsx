@@ -93,15 +93,7 @@ function Header() {
 
 
   useEffect(() => {
-
-    if (!!isLoggedIn){
-
-      window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
-      return;
-      
-    }
     
-
     const userInfo = async function () {
 
       try {
