@@ -1,3 +1,1 @@
-# React + Vite
-
-Frontend of YoutubeMediator
+## Frontend of YoutubeMediator
