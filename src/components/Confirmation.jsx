@@ -22,8 +22,10 @@ function Confirmation() {
                         headers: { Authorization: `Bearer ${cookie}` }
                     })
                     setVideo(response.data)
-                    const url = response.data.cloudinary_id;
-                    setUrl(url)
+                    // const url = response.data.cloudinary_id;
+                    const url = response.data.video_file;
+                    const finalUrl = `https://youtubemediatorbackend.onrender.com${url}`;
+                    setUrl(finalUrl)
                 }
 
                 getData()
