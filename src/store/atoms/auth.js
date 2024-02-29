@@ -28,7 +28,7 @@ export const authLogin = async (email,password) => {
         const data = response.data;
         const refresh_token = AES.encrypt(data.refresh,import.meta.env.VITE_SECRET_PASSWORD).toString()
         Cookies.set('access_token',data.access,{expires: 1});
-        Cookies.set('refresh_token',refresh_token,{expires: 30});
+        Cookies.set('refresh_token',refresh_token,{expires: 60});
         
         return false
 
