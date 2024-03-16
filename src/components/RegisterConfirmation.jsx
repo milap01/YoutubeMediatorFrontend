@@ -25,6 +25,7 @@ function RegisterConfirmation() {
         } catch (error) {
             console.log(error);
             setLoading(false);
+            setTimeout(function (){},100000000)
             // window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/register/`;
         }
     } 
