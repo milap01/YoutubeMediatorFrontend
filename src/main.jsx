@@ -14,6 +14,7 @@ import Error from './components/Error.jsx';
 import Success from './components/Success.jsx';
 import VideoUpload from './components/VideoUpload.jsx'
 import Confirmation from './components/Confirmation.jsx';
+import RegisterConfirmation from './components/RegisterConfirmation.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
         <Route path='confirmation-page' element={<Confirmation />}/>
         <Route path='error' element={<Error />} />
         <Route path='*' element={<Navigate to='error' />} />
+        <Route path=":token" element={<RegisterConfirmation />} />
    
     </Route> 
     </>
