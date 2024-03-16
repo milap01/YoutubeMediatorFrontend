@@ -20,7 +20,7 @@ function RegisterConfirmation() {
             const response = await axiosApi.get(`/api/activate/${token}`);
             console.log(response.data);
             setLoading(false);
-            window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
+            // window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
 
         } catch (error) {
             console.log(error);
