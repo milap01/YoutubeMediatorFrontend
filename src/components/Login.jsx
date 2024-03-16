@@ -7,7 +7,8 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 
 
 function Login() {
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const activationStatus = urlParams.get('status');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isLoggedIn = useRecoilValue(loginAtom);
@@ -63,6 +64,12 @@ function Login() {
             {error ? <div>
                 <div className="bg-red-200 text-center  text-black py-4 lg:px-4">
                     <span className="font-semibold mr-2 text-left flex-auto">Email or password is wrong</span>
+                </div>
+            </div> : ""}
+
+            {activationStatus ? <div>
+                <div className="bg-green-200 text-center  text-black py-4 lg:px-4">
+                    <span className="font-semibold mr-2 text-left flex-auto">Account is Activated Successfully.</span>
                 </div>
             </div> : ""}
 
