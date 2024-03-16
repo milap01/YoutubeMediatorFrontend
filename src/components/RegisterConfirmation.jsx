@@ -25,7 +25,7 @@ function RegisterConfirmation() {
         } catch (error) {
             console.log(error);
             setLoading(false);
-            window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/register/`;
+            // window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/register/`;
         }
     } 
 
