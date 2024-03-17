@@ -7,8 +7,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 
 
 function Login() {
-    const registerAtom = useRecoilValue(registerSuccess);
-    const activationStatus = registerAtom;
+    const activationStatus = localStorage.getItem('status');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isLoggedIn = useRecoilValue(loginAtom);
@@ -67,7 +66,7 @@ function Login() {
                 </div>
             </div> : ""}
 
-            {activationStatus ? <div>
+            {activationStatus == "success" ? <div>
                 <div className="bg-green-200 text-center  text-black py-4 lg:px-4">
                     <span className="font-semibold mr-2 text-left flex-auto">Account is Activated Successfully.</span>
                 </div>

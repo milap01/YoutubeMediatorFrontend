@@ -28,8 +28,8 @@ function RegisterConfirmation() {
             console.log(response.data);
             setLoading(false);
             setRegisterAtom(true)
-            navigateTo('/user/login')
-            // window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
+            localStorage.setItem('status','success')
+            window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
 
         } catch (error) {
             console.log(error);
