@@ -67,6 +67,12 @@ function Login() {
                 </div>
             </div> : ""}
 
+            {activationStatus == "success" ? <div>
+                <div className="bg-green-200 text-center  text-black py-4 lg:px-4">
+                    <span className="font-semibold mr-2 text-left flex-auto">Yout account is Created.</span>
+                </div>
+            </div> : ""}
+
             {emailSent == "success" ? <div>
                 <div className="bg-green-200 text-center  text-black py-4 lg:px-4">
                     <span className="font-semibold mr-2 text-left flex-auto">Email sent to your mail id for account activation.</span>

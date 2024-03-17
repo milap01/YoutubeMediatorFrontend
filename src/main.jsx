@@ -24,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="user" element={<Auth />} >
          <Route path='register' element={<Register />} />
          <Route path='login' element={<Login />} />
+         <Route path=":token" element={<RegisterConfirmation />} />
       </Route>
 
     <Route path='/' element={<App />} >
@@ -36,7 +37,6 @@ const router = createBrowserRouter(
         <Route path='confirmation-page' element={<Confirmation />}/>
         <Route path='error' element={<Error />} />
         <Route path='*' element={<Navigate to='error' />} />
-        <Route path=":token" element={<RegisterConfirmation />} />
    
     </Route> 
     </>
