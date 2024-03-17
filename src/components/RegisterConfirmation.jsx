@@ -1,11 +1,15 @@
 import React, { useEffect,useState } from 'react'
 import {useParams} from 'react-router-dom'
 import { axiosApi } from '../api/axios';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { registerSuccess } from '../store/atoms/auth';
 
 function RegisterConfirmation() {
 
   const {token} = useParams();
   const [loading, setLoading] = useState(false);
+  const [registerAtom,setRegisterAtom] = useRecoilState(registerSuccess);
+
 
   useEffect(function(){
 
@@ -20,7 +24,8 @@ function RegisterConfirmation() {
             const response = await axiosApi.get(`/api/activate/${token}/`);
             console.log(response.data);
             setLoading(false);
-            window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login?status=success`;
+            setRegisterAtom(true)
+            window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
 
         } catch (error) {
             console.log(error);

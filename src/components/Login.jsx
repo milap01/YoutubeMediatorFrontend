@@ -1,14 +1,14 @@
 import React, {useState } from 'react';
 import logo from '../assets/logo.png';
 import {Link} from 'react-router-dom'
-import { authLogin, loadingAtom, loginAtom } from '../store/atoms/auth';
+import { authLogin, loadingAtom, loginAtom, registerSuccess } from '../store/atoms/auth';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 
 
 function Login() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const activationStatus = urlParams.get('status');
+    const registerAtom = useRecoilValue(registerSuccess);
+    const activationStatus = registerAtom;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isLoggedIn = useRecoilValue(loginAtom);

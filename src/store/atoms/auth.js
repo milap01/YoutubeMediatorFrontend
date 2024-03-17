@@ -13,6 +13,11 @@ export const accessToken = atom({
     default : Cookies.get('access_token')?true:false,
 })
 
+export const registerSuccess = atom({
+    key : "registerSuccess",
+    default : false
+})
+
 export const loadingAtom = atom({
     key : 'loadingAtom',
     default : false,
