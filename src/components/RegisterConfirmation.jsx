@@ -28,6 +28,7 @@ function RegisterConfirmation() {
             console.log(response.data);
             setLoading(false);
             localStorage.setItem('status','success')
+            localStorage.removeItem('emailSent')
             window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
 
         } catch (error) {
