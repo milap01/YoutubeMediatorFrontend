@@ -36,6 +36,7 @@ function Register() {
                 setLoading(false);
 
                 if (res.status == 201) {
+                    localStorage.setItem('emailSent','success')
                     window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`
                 }
             })

@@ -27,7 +27,6 @@ function RegisterConfirmation() {
             const response = await axiosApi.get(`/api/activate/${token}/`);
             console.log(response.data);
             setLoading(false);
-            setRegisterAtom(true)
             localStorage.setItem('status','success')
             window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
 
