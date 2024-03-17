@@ -3,8 +3,11 @@ import {useParams} from 'react-router-dom'
 import { axiosApi } from '../api/axios';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { registerSuccess } from '../store/atoms/auth';
+import { useNavigate } from 'react-router-dom'
 
 function RegisterConfirmation() {
+
+  const navigateTo = useNavigate()
 
   const {token} = useParams();
   const [loading, setLoading] = useState(false);
@@ -25,7 +28,8 @@ function RegisterConfirmation() {
             console.log(response.data);
             setLoading(false);
             setRegisterAtom(true)
-            window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
+            navigateTo('/user/login')
+            // window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/login/`;
 
         } catch (error) {
             console.log(error);
