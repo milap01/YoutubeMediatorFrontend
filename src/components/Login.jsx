@@ -54,6 +54,7 @@ function Login() {
     }
 
     if (isLoggedIn) {
+        localStorage.removeItem('status')
         window.location.href = import.meta.env.VITE_ROOT_URL
     }
 
@@ -69,7 +70,7 @@ function Login() {
 
             {activationStatus == "success" ? <div>
                 <div className="bg-green-200 text-center  text-black py-4 lg:px-4">
-                    <span className="font-semibold mr-2 text-left flex-auto">Yout account is Created.</span>
+                    <span className="font-semibold mr-2 text-left flex-auto">Your account is Created.</span>
                 </div>
             </div> : ""}
 
