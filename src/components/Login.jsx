@@ -32,6 +32,8 @@ function Login() {
 
             localStorage.removeItem('status')
 
+            
+
             window.location.href = localStorage.getItem('path') ? localStorage.getItem('path') : import.meta.env.VITE_ROOT_URL;
 
         })

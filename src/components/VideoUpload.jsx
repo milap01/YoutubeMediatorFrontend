@@ -64,6 +64,7 @@ function VideoUpload() {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${cookie} ` }
         })
         setLoading(false)
+        console.log(response.data);
       }
       catch (error) {
         if (error.response.status == 401) {
