@@ -14,6 +14,7 @@ function Register() {
     const [isLoading, setLoading] = useRecoilState(loadingAtom);
     const [error, setError] = useState(false);
     const [errMsg, setErrMsg] = useState('');
+    const emailErr = localStorage.getItem('status')
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -83,6 +84,12 @@ function Register() {
             {error ? <div>
                 <div className="bg-red-200 text-center py-4 lg:px-4">
                     <span className="font-semibold mr-2 text-left flex-auto">{errMsg ? errMsg : "Inputs are not correct"}</span>
+                </div>
+            </div> : ""}
+
+            {emailErr == "error" ? <div>
+                <div className="bg-red-200 text-center py-4 lg:px-4">
+                    <span className="font-semibold mr-2 text-left flex-auto">Account is not Activated.</span>
                 </div>
             </div> : ""}
 
