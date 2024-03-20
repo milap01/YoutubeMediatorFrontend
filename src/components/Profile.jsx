@@ -12,6 +12,7 @@ function Profile() {
     const [full_name, setFullName] = useState('');
     const [type,setType] = useState('');
     const [error,setError] = useState(false);
+    const [msgToken,setMsgToken] = useState("")
 
     useEffect(function () {
 
@@ -55,6 +56,8 @@ function Profile() {
             const response = await axiosApi.get('/api/revoke/',{headers : {Authorization : `Bearer ${cookie}`}})
 
             console.log(response.data);
+            setMsgToken(response.data.msg)
+
             setLoading(false)
 
         } catch (err) {
@@ -113,6 +116,12 @@ function Profile() {
             {error ? <div>
                     <div className="bg-red-200 text-center  text-black py-4 lg:px-4">
                         <span className="font-semibold mr-2 text-left flex-auto">Update not done</span>
+                    </div>
+                </div> : ""}
+
+                {msgToken ? <div>
+                    <div className="bg-red-200 text-center  text-black py-4 lg:px-4">
+                        <span className="font-semibold mr-2 text-left flex-auto">{msgToken}</span>
                     </div>
                 </div> : ""}
 
