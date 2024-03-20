@@ -33,6 +33,7 @@ function RegisterConfirmation() {
 
         } catch (error) {
             console.log(error);
+            localStorage.setItem('status','error')
             setLoading(false);
             window.location.href = `${import.meta.env.VITE_ROOT_URL}/user/register/`;
         }
