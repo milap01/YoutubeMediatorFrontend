@@ -15,6 +15,7 @@ import Success from './components/Success.jsx';
 import VideoUpload from './components/VideoUpload.jsx'
 import Confirmation from './components/Confirmation.jsx';
 import RegisterConfirmation from './components/RegisterConfirmation.jsx';
+import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         <Route path='confirmation-page' element={<Confirmation />}/>
         <Route path='error' element={<Error />} />
         <Route path='*' element={<Navigate to='error' />} />
+        <Route path='privacy-policy' element={<PrivacyPolicy />} />
    
     </Route> 
     </>
