@@ -50,9 +50,9 @@ function Profile() {
         setLoading(true)
 
         try {
-            const cookie = Cookies.get('access_token',{headers : {Authorization : `Bearer ${cookie}`}});
+            const cookie = Cookies.get('access_token');
 
-            const response = await axiosApi.get('/api/revoke/')
+            const response = await axiosApi.get('/api/revoke/',{headers : {Authorization : `Bearer ${cookie}`}})
 
             console.log(response.data);
             setLoading(false)
