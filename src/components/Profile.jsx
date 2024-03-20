@@ -46,6 +46,23 @@ function Profile() {
 
     }, [error])
 
+    async function revokeTokens(){
+        setLoading(true)
+
+        try {
+            const cookie = Cookies.get('access_token');
+
+            const response = await axiosApi.get('/api/revoke/')
+
+            console.log(response.data);
+            setLoading(false)
+
+        } catch (err) {
+            console.log(response.data);
+            setLoading(false)
+        }
+    }
+
     async function handleSubmit(){
 
         setLoading(true);
@@ -123,6 +140,8 @@ function Profile() {
                     <input type='email' className='m-3 p-3  text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono'  placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
         
                     <button onClick={handleSubmit} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Update </button>
+
+                    <button onClick={revokeTokens} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Revoke Tokens </button>
 
 
                 </div>
