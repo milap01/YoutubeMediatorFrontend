@@ -21,17 +21,18 @@ function Confirmation() {
                     const response = await axiosApi(`/api/video-details/`, {
                         headers: { Authorization: `Bearer ${cookie}` }
                     })
+
+                    console.log(response.data)
+
                     setVideo(response.data)
-                    // const url = response.data.cloudinary_id;
-                    const url = response.data.video_file;
-                    const finalUrl = `https://youtubemediatorbackend.onrender.com${url}`;
-                    setUrl(finalUrl)
+                    const url = "https://www.youtube.com/watch?v=" + response.data.video_id
+                    setUrl(url)
                 }
 
                 getData()
 
             } catch (error) {
-
+                console.log(error.message);
             }
         }
     }, [])
