@@ -95,7 +95,7 @@ function PrivacyPolicy() {
                     <p>Administered by: Us</p>
                     <p>Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>Functionality Cookies</strong></p>
                     <p>Type: Persistent Cookies</p>
                     <p>Administered by: Us</p>
@@ -103,42 +103,42 @@ function PrivacyPolicy() {
                 </li>
             </ul>
             <p className='mt-2'>For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy or the Cookies section of our Privacy Policy.</p>
-            <h3>Use of Your Personal Data</h3>
+            <h3 className='text-xl text-bold mt-2'>Use of Your Personal Data</h3>
             <p className='mt-2'>The Company may use Personal Data for the following purposes:</p>
-            <ul>
-                <li>
+            <ul className='pl-10 m-2 list-disc'>
+                <li className='mt-1'>
                     <p><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>To provide You</strong> with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of Our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Us about our Service users is among the assets transferred.</p>
                 </li>
-                <li>
+                <li className='mt-1'>
                     <p><strong>For other purposes</strong>: We may use Your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Service, products, services, marketing and your experience.</p>
                 </li>
             </ul>
             <p className='mt-2'>We may share Your personal information in the following situations:</p>
-            <ul>
-                <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service,  to contact You.</li>
-                <li><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
-                <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
-                <li><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
-                <li><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</li>
-                <li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with Your consent.</li>
+            <ul className='pl-10 m-2 list-disc'>
+                <li className='mt-1'><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service,  to contact You.</li>
+                <li className='mt-1'><strong>For business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.</li>
+                <li className='mt-1'><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+                <li className='mt-1'><strong>With business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
+                <li className='mt-1'><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</li>
+                <li className='mt-1'><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with Your consent.</li>
             </ul>
             <h3 className='text-xl text-bold mt-2'>Retention of Your Personal Data</h3>
             <p className='mt-2'>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
@@ -159,12 +159,12 @@ function PrivacyPolicy() {
             <p className='mt-2'>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
             <h4 className='text-lg text-bold mt-2'>Other legal requirements</h4>
             <p className='mt-2'>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
-            <ul>
-                <li>Comply with a legal obligation</li>
-                <li>Protect and defend the rights or property of the Company</li>
-                <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
-                <li>Protect the personal safety of Users of the Service or the public</li>
-                <li>Protect against legal liability</li>
+            <ul className=' list-disc pl-10 m-2 '>
+                <li className='mt-1'>Comply with a legal obligation</li>
+                <li className='mt-1'>Protect and defend the rights or property of the Company</li>
+                <li className='mt-1'>Prevent or investigate possible wrongdoing in connection with the Service</li>
+                <li className='mt-1'>Protect the personal safety of Users of the Service or the public</li>
+                <li className='mt-1'>Protect against legal liability</li>
             </ul>
             <h3 className='text-xl text-bold mt-2'>Security of Your Personal Data</h3>
             <p className='mt-2'>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
