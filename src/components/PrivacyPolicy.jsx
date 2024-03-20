@@ -16,7 +16,7 @@ function PrivacyPolicy() {
 
             <h3 className='text-xl mt-2 text-bold'>Definitions</h3>
             <p className=' mt-2 '>For the purposes of this Privacy Policy:</p>
-            <ul className='mt-2 list-disc'>
+            <ul className='mt-2 list-disc p-10'>
                 <li className=''>
                     <p><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</p>
                 </li>
