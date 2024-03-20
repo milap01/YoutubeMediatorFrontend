@@ -131,11 +131,11 @@ function Profile() {
             </div> : ""}
 
             {
-                open ? <div id="marketing-banner" tabindex="-1" className="fixed mt-14 z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-white border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6 dark:bg-gray-700 dark:border-gray-600">
+                open ? <div id="marketing-banner" tabindex="-1" className="fixed mt-24 mb-10 z-50 flex flex-col md:flex-row justify-between w-[calc(100%-2rem)] p-4 -translate-x-1/2 bg-white border border-gray-100 rounded-lg shadow-sm lg:max-w-7xl left-1/2 top-6 dark:bg-gray-700 dark:border-gray-600">
                 <div className="flex flex-col items-start mb-3 me-4 md:items-center md:flex-row md:mb-0">
                     <a href="https://flowbite.com/" className="flex items-center mb-2 border-gray-200 md:pe-4 md:me-4 md:border-e md:mb-0 dark:border-gray-600">
                         <img src={logo} className="h-6 me-2" alt="Flowbite Logo" />
-                        <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                        <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">YoutubeMediator</span>
                     </a>
                     <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">we encourage you to revoke your token after your uploading is done and when you have required then regenerate it by clicking credentials</p>
                 </div>
