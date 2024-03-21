@@ -20,7 +20,7 @@ function VideoUpload() {
 
     const userType = localStorage.getItem('type')
 
-    if (userType != "CREATOR"){
+    if (userType != "EDITOR"){
         window.location.href = import.meta.env.VITE_ROOT_URL
     }
 
