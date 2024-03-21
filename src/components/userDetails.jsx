@@ -4,7 +4,7 @@ import { axiosApi } from '../api/axios';
 import Cookies from 'js-cookie';
 import logo from '../assets/logo.png';
 
-function userDetails() {
+function UserDetails() {
 
     const { id } = useParams();
     const [user, setUser] = useState({})
@@ -12,6 +12,9 @@ function userDetails() {
 
     useEffect(async function () {
         setLoading(true)
+
+        console.log(id)
+
         try {
             const cookie = Cookies.get('access_token');
             const response = await axiosApi.get(`/api/user-details/${id}/`, { headers: { Authorization: `Bearer ${cookie}` } });
@@ -44,6 +47,7 @@ function userDetails() {
 
     return (
         <div>
+            
             <div className=' w-32 mb-6' >
                 <div>
                     <img src={user.avatar ? user.avatar : logo} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
@@ -58,4 +62,4 @@ function userDetails() {
     )
 }
 
-export default userDetails
+export default UserDetails

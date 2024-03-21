@@ -16,7 +16,7 @@ import VideoUpload from './components/VideoUpload.jsx'
 import Confirmation from './components/Confirmation.jsx';
 import RegisterConfirmation from './components/RegisterConfirmation.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
-import userDetails from './components/userDetails.jsx';
+import UserDetails from './components/userDetails.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,7 +40,7 @@ const router = createBrowserRouter(
         <Route path='error' element={<Error />} />
         <Route path='*' element={<Navigate to='error' />} />
         <Route path='privacy-policy' element={<PrivacyPolicy />} />
-        <Route path='user-details/:id' element={<userDetails />} />
+        <Route path='user-details/:id' element={<UserDetails />} />
    
     </Route> 
     </>
