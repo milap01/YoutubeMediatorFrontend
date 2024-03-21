@@ -48,7 +48,7 @@ function UserDetails() {
     return (
         <div>
             
-            <div className=' w-32 mb-6' >
+        <div className=' w-32 mb-6 flex items-center mt-14' >
                 <div>
                     <img src={user.avatar ? user.avatar : logo} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
                 </div>
@@ -57,6 +57,8 @@ function UserDetails() {
                 </div>
             </div>
         </div>
+
+        
 
 
     )
