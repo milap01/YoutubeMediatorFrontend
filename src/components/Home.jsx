@@ -494,6 +494,10 @@ function Home() {
         <div className='m-4 flex flex-wrap justify-center items-center ' >
 
           {
+            users == "" ? "No Users are Found" : ""
+          }
+
+          {
             users?.map((user) => (
               <div key={user.email} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-4  ">
                 <div className="flex justify-end px-4 pt-4">
