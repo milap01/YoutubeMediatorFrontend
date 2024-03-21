@@ -3,7 +3,7 @@ import { axiosApi } from "../api/axios";
 import Cookies from 'js-cookie';
 
 
-function UploadWidget({ email, full_name, setAvatar }) {
+function UploadWidget({ email, full_name, setAvatar,bio }) {
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
 
@@ -27,6 +27,7 @@ function UploadWidget({ email, full_name, setAvatar }) {
                         const response = await axiosApi.put('/api/user-profile/', {
                             "full_name": full_name,
                             "email": email,
+                            "bio" : bio,
                             "avatar": result.info.url.toString()
                         }, {
                             headers: { Authorization: `Bearer ${cookie}` }

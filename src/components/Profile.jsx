@@ -14,6 +14,7 @@ function Profile() {
     const [error, setError] = useState(false);
     const [msgToken, setMsgToken] = useState("")
     const [open,setOpen] = useState(true)
+    const [bio,setBio] = useState("")
 
     useEffect(function () {
 
@@ -30,6 +31,7 @@ function Profile() {
                 setFullName(response.data.full_name);
                 setType(response.data.type);
                 setAvatar(response.data.avatar)
+                setBio(response.data.bio)
                 setLoading(false);
             } catch (err) {
 
@@ -75,7 +77,8 @@ function Profile() {
             const response = await axiosApi.put('/api/user-profile/', {
                 "full_name": full_name,
                 "email": email,
-                "avatar": avatar
+                "avatar": avatar,
+                "bio" : bio
             }, {
                 headers: { Authorization: `Bearer ${cookie}` }
             })
@@ -167,13 +170,15 @@ function Profile() {
 
                 </div>
 
-                <div><UploadWidget full_name={full_name} email={email} setAvatar={setAvatar} /></div>
+                <div><UploadWidget full_name={full_name} email={email} setAvatar={setAvatar} bio={bio} /></div>
 
                 <div className='mt-6 flex flex-col p-4 ' >
 
                     <input type='text' className='m-3 p-3 pr-16 text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono' placeholder='Full Name' value={full_name} onChange={(e) => setFullName(e.target.value)} />
 
                     <input type='email' className='m-3 p-3  text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                    <textarea value={bio} onChange={(e) => setBio(e.target.value)} id="message" rows="4" className="block p-2.5 w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bio"></textarea>
 
                     <button onClick={handleSubmit} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Update </button>
 
