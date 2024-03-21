@@ -10,26 +10,32 @@ function UserDetails() {
     const [user, setUser] = useState({})
     const [loading, setLoading] = useState(false)
 
-    useEffect(async function () {
-        setLoading(true)
+    useEffect(() => {
+        let isMounted = true;
 
-        console.log(id)
+        setLoading(true);
 
-        try {
-            const cookie = Cookies.get('access_token');
-            const response = await axiosApi.get(`/api/user-details/${id}/`, { headers: { Authorization: `Bearer ${cookie}` } });
+        const fetchData = async () => {
+            try {
+                const cookie = Cookies.get('access_token');
+                const response = await axiosApi.get(`/api/user-details/${id}/`, { headers: { Authorization: `Bearer ${cookie}` } });
 
-            console.log(response.data);
+                if (isMounted) {
+                    setUser(response.data);
+                    setLoading(false);
+                }
+            } catch (error) {
+                console.log(error.message);
+                setLoading(false);
+            }
+        };
 
-            setUser(response.data)
-            setLoading(false)
+        fetchData();
 
-        } catch (error) {
-            console.log(error.message);
-            setLoading(false)
-        }
-
-    }, [])
+        return () => {
+            isMounted = false; // Cleanup function to prevent state update on unmounted component
+        };
+    }, [id])
 
     if (loading) {
         return <>
@@ -47,8 +53,8 @@ function UserDetails() {
 
     return (
         <div>
-            
-        <div className=' w-32 mb-6 mt-14 flex flex-col items-center justify-center' >
+
+            <div className=' w-32 mb-6 mt-14 flex flex-col items-center justify-center' >
                 <div>
                     <img src={user.avatar ? user.avatar : logo} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
                 </div>
