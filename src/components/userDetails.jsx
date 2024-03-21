@@ -48,8 +48,8 @@ function UserDetails() {
     return (
         <div>
             
-        <div className=' w-32 mb-6 mt-14' >
-                <div className='flex items-center justify-center' >
+        <div className=' w-32 mb-6 mt-14 flex flex-col items-center justify-center' >
+                <div>
                     <img src={user.avatar ? user.avatar : logo} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
                 </div>
                 <div className='text-white text-center font-mono mt-4' >
