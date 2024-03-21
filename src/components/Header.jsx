@@ -12,7 +12,7 @@ function Header() {
 
   const navigateTo = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
-  const [type, setType] = useState(true);
+  const [type, setType] = useState('');
   const isLoggedIn = useRecoilValue(loginAtom);
   const [accessTokenValue, setAccessToken] = useRecoilState(accessToken);
   const [loading,setLoading] = useRecoilState(loadingAtom);
@@ -106,12 +106,12 @@ function Header() {
         localStorage.setItem('full_name', response.data.full_name);
         localStorage.setItem('email', response.data.email);
         if (userType == "CREATOR") {
-          setType(true);
+          setType('CREATOR');
           localStorage.setItem('type', 'CREATOR')
         }
 
         if (userType == "EDITOR") {
-          setType(false);
+          setType('EDITOR');
           localStorage.setItem('type', 'EDITOR');
         }
 
@@ -217,11 +217,15 @@ function Header() {
 
             <Link className=' ml-3 mt-4 hover:drop-shadow-xl shadow-indigo-300/40 '  >
               {
-                type ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
+                type == "CREATOR" ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
                   Credentials
-                </button> : <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
-                  Upload Video
-                </Link>
+                </button> :""
+              }
+
+              {
+                type == "EDITOR" ?  <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
+                Upload Video
+              </Link> : ""
               }
 
             </Link>
