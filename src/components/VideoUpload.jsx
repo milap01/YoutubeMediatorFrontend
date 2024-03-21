@@ -18,6 +18,12 @@ function VideoUpload() {
 
   useEffect(() => {
 
+    const userType = localStorage.getItem('type')
+
+    if (userType != "CREATOR"){
+        window.location.href = import.meta.env.VITE_ROOT_URL
+    }
+
     const getCreators = async () => {
 
       try {
