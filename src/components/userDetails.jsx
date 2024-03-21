@@ -14,7 +14,7 @@ function userDetails() {
         setLoading(true)
         try {
             const cookie = Cookies.get('access_token');
-            const response = await axiosApi.get(`/api/user-details/${id}`, { headers: { Authorization: `Bearer ${cookie}` } });
+            const response = await axiosApi.get(`/api/user-details/${id}/`, { headers: { Authorization: `Bearer ${cookie}` } });
 
             console.log(response.data);
 
@@ -54,7 +54,7 @@ function userDetails() {
             </div>
         </div>
 
-        
+
     )
 }
 
