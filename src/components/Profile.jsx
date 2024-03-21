@@ -182,7 +182,11 @@ function Profile() {
 
                     <button onClick={handleSubmit} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Update </button>
 
-                    <button onClick={revokeTokens} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Revoke Tokens </button>
+                    {
+                        type == "CREATOR" ? <button onClick={revokeTokens} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Revoke Tokens </button> : ""
+                    }
+
+                    
 
 
                 </div>
