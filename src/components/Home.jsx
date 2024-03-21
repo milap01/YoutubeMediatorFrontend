@@ -271,6 +271,10 @@ function Home() {
             <div><h1 className='text-white font-mono text-4xl text-center m-16' >{type == "CREATOR" ? "EDITORS" : "CREATORS"}</h1></div>
           </div>
 
+          {
+            users == "" ? <h1 className='text-white font-mono text-2xl text-center m-16' >No Users </h1> : ""
+          }
+
           <div className='flex flex-col' >
 
           <div className='m-16 flex flex-wrap justify-center items-center ' >
@@ -380,6 +384,11 @@ function Home() {
           <div>
             <div><h1 className='text-white font-mono text-3xl text-center m-16' >{type == "CREATOR" ? "EDITORS" : "CREATORS"}</h1></div>
           </div>
+
+
+          {
+            users == "" ? <h1 className='text-white font-mono text-xl text-center m-16' >No Users </h1> : ""
+          }
 
           <div className='flex flex-col' >
 
@@ -494,7 +503,7 @@ function Home() {
         <div className='m-4 flex flex-wrap justify-center items-center ' >
 
           {
-            users == "" ? "No Users are Found" : ""
+            users == "" ? <h1 className='text-white font-mono text-3xl text-center m-16' >No Users </h1> : ""
           }
 
           {
