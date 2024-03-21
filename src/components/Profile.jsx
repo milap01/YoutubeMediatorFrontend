@@ -178,7 +178,7 @@ function Profile() {
 
                     <input type='email' className='m-3 p-3  text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
 
-                    <textarea value={bio} onChange={(e) => setBio(e.target.value)} id="message" rows="4" className="block p-2.5 w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bio"></textarea>
+                    <textarea value={bio} onChange={(e) => setBio(e.target.value)} id="message" rows="4" className="m-3 p-3  text-lg border-solid border-2 border-cyan-900 rounded-md hover:border-green-900 text-white bg-black font-mono" placeholder="Bio"></textarea>
 
                     <button onClick={handleSubmit} className=' m-2 p-2 border border-solid border-indigo-600 rounded-md hover: bg-indigo-600 text-black font-bold text-xl font-mono' >Update </button>
 
