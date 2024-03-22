@@ -210,14 +210,14 @@ function Header() {
 
           <div className=' text-white text-lg flex  m-2 ' >
 
-            <Link to='/profile' className=' ml-3 mt-2 hover:text-indigo-400 '  >
+            <Link to='/profile' className=' ml-3 mt-4 hover:text-indigo-400 '  >
 
               Profile
 
             </Link>
 
 
-            <Link to='/notifications' className='  ml-8  mt-2 hover:text-indigo-400 '  >
+            <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >
                 Notifications
             </Link>
             <button onClick={handleLogout} className='  ml-8  hover:text-indigo-400 '  >
