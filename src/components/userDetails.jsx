@@ -58,10 +58,8 @@ function UserDetails() {
 
             <div className='flex flex-col items-center mt-8'>
 
-                <div className='mb-6'>
-                    <div>
-                        <img src={user.avatar} className='w-32 h-32 rounded-full border-2 border-indigo-300' alt='User Avatar' />
-                    </div>
+                <div className='mb-8'>
+                    <img src={user.avatar} className='w-32 h-32 rounded-full border-4 border-white shadow-lg' alt='User Avatar' />
                     <div className='text-white text-center font-mono mt-4'>
                         {user.type}
                     </div>
@@ -69,8 +67,8 @@ function UserDetails() {
 
                 <div className="bg-gray-900 shadow-lg rounded-lg overflow-hidden w-full max-w-xl">
                     <div className="px-6 py-4">
-                        <div className="font-bold text-2xl mb-2 text-white">Bio</div>
-                        <p className="text-white text-lg">
+                        <div className="font-bold text-xl mb-4 text-white">Bio</div>
+                        <p className="text-white text-base leading-relaxed">
                             {user.bio}
                         </p>
                     </div>
