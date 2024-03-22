@@ -71,6 +71,10 @@ function UserDetails() {
                         <p className="text-white text-base leading-relaxed">
                             {user.bio}
                         </p>
+                        <div className="flex justify-center mt-4">
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-4">Connect</button>
+                            <button className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full">Message</button>
+                        </div>
                     </div>
                 </div>
 
