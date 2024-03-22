@@ -52,40 +52,40 @@ function UserDetails() {
     }
 
     return (
-        
+
 
         <>
 
             <div className='flex flex-col items-center mt-28' >
 
-            <div >
+                <div >
 
-                <div className=' w-32 mb-6' >
-                    <div>
-                        <img src={user.avatar} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
+                    <div className=' w-32 mb-6' >
+                        <div>
+                            <img src={user.avatar} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
+                        </div>
+                        <div className='text-white text-center font-mono mt-4' >
+                            {user.type}
+                        </div>
                     </div>
-                    <div className='text-white text-center font-mono mt-4' >
-                        {user.type}
-                    </div>
+
                 </div>
-
-            </div>
             </div>
 
 
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden mx-auto max-w-md">
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">User Description</div>
-    <p class="text-gray-700 text-base">
-      {user.bio}
-    </p>
-  </div>
-</div>
+            <div class="shadow-lg overflow-hidden mx-auto max-w-md">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Bio</div>
+                    <p class="text-white text-base">
+                        {user.bio}
+                    </p>
+                </div>
+            </div>
 
-        
+
         </>
-        
-        
+
+
 
     )
 }
