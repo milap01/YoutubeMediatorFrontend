@@ -15,7 +15,7 @@ function Header() {
   const [type, setType] = useState('');
   const isLoggedIn = useRecoilValue(loginAtom);
   const [accessTokenValue, setAccessToken] = useRecoilState(accessToken);
-  const [loading,setLoading] = useRecoilState(loadingAtom);
+  const [loading, setLoading] = useRecoilState(loadingAtom);
 
   useEffect(function () {
     if (!isLoggedIn) {
@@ -26,44 +26,44 @@ function Header() {
   useEffect(() => {
     if (!accessTokenValue) {
       const refresh_cookie = Cookies.get('refresh_token');
-  
+
       if (refresh_cookie) {
-  
+
         try {
-  
-            const bytes = AES.decrypt(refresh_cookie, import.meta.env.VITE_SECRET_PASSWORD);
-  
-            const cookie = bytes.toString(enc.Utf8);
-  
-            const getRefresh = async () => {
-  
+
+          const bytes = AES.decrypt(refresh_cookie, import.meta.env.VITE_SECRET_PASSWORD);
+
+          const cookie = bytes.toString(enc.Utf8);
+
+          const getRefresh = async () => {
+
             const response = await axiosApi.post('/api/token/refresh/', {
               "refresh": cookie,
             }
             )
-  
+
             Cookies.set('access_token', response.data.access, { expires: 1 });
-  
+
             setAccessToken(true)
-  
+
             setLoading(false)
-  
+
             window.location.href = import.meta.env.VITE_ROOT_URL
           }
-  
+
           getRefresh()
-  
+
         } catch (error) {
           setLoading(false);
         }
-      }else{
+      } else {
         navigateTo('/user/login')
       }
-  
-  
-  
+
+
+
     }
-  },[accessTokenValue])
+  }, [accessTokenValue])
 
 
   if (!isLoggedIn) {
@@ -84,16 +84,16 @@ function Header() {
 
   function getCredentials() {
     const user = localStorage.getItem('email')
-    if (user){
+    if (user) {
       window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/authorize/${user}`;
 
-    } 
+    }
     return;
   }
 
 
   useEffect(() => {
-    
+
     const userInfo = async function () {
 
       try {
@@ -116,7 +116,7 @@ function Header() {
         }
 
       } catch (error) {
-        if (error.response.status == 401){
+        if (error.response.status == 401) {
           // window.location.href = import.meta.env.VITE_ROOT_URL;
         }
       }
@@ -211,7 +211,25 @@ function Header() {
           <div className=' text-white text-lg  m-2 ' >
 
             <Link to='/profile' className=' ml-3 mt-4 hover:text-indigo-400 '  >Profile</Link>
-            <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >Notifications</Link>
+            <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >
+
+              <div class="relative h-32 w-32 mt-2">
+
+                <div class="p-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="text-gray-600 w-6 h-6"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+            </Link>
             <button onClick={handleLogout} className='  ml-8  mt-4 hover:text-indigo-400 '  >Logout</button>
 
 
@@ -219,13 +237,13 @@ function Header() {
               {
                 type == "CREATOR" ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
                   Credentials
-                </button> :""
+                </button> : ""
               }
 
               {
-                type == "EDITOR" ?  <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
-                Upload Video
-              </Link> : ""
+                type == "EDITOR" ? <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
+                  Upload Video
+                </Link> : ""
               }
 
             </Link>
