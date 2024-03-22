@@ -221,7 +221,7 @@ function Header() {
               Notifications
 
             </Link>
-            <button onClick={handleLogout} className='  ml-8 mt-4  hover:text-indigo-400 '  >
+            <button onClick={handleLogout} className='  ml-8 mt-3  hover:text-indigo-400 '  >
 
               Logout
             </button>
@@ -235,7 +235,7 @@ function Header() {
               }
 
               {
-                type == "EDITOR" ? <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 mt-5 rounded-md ">
+                type == "EDITOR" ? <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 mt-8 rounded-md ">
                   Upload Video
                 </Link> : ""
               }
