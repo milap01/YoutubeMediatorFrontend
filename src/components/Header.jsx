@@ -208,7 +208,7 @@ function Header() {
             </Link>
           </div>
 
-          <div className=' text-white text-lg  m-2 ' >
+          <div className=' text-white text-lg flex  m-2 ' >
 
             <Link to='/profile' className=' ml-3 mt-4 hover:text-indigo-400 '  >Profile</Link>
             <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >
