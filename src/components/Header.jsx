@@ -248,7 +248,7 @@ function Header() {
 
             <Link to='/profile' className=' ml-3 mt-2 hover:text-indigo-400 '  >
 
-              <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={user.avatar} alt="Bordered avatar" />
+              <img class="w-10 h-10 p-1 rounded ring-gray-300 dark:ring-gray-500" src={user.avatar} alt="Bordered avatar" />
 
             </Link>
 
