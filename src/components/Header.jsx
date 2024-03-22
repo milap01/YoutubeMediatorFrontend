@@ -227,7 +227,7 @@ function Header() {
             </button>
 
 
-            <Link className=' ml-3 mt-4  hover:drop-shadow-xl shadow-indigo-300/40 '  >
+            <Link className=' ml-3   hover:drop-shadow-xl shadow-indigo-300/40 '  >
               {
                 type == "CREATOR" ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
                   Credentials
