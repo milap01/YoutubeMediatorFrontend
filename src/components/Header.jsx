@@ -210,8 +210,8 @@ function Header() {
 
           <div className=' text-white text-lg flex  m-2 ' >
 
-            <Link to='/profile' className=' ml-3 mt-4 hover:text-indigo-400 '  >Profile</Link>
-            <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >
+            <Link to='/profile' className=' ml-3 mt-6 hover:text-indigo-400 '  >Profile</Link>
+            <Link to='/notifications' className='  ml-8  mt-6 hover:text-indigo-400 '  >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
