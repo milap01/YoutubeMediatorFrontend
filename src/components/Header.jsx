@@ -217,11 +217,11 @@ function Header() {
             </Link>
 
 
-            <Link to='/notifications' className='  ml-8  mt-5 hover:text-indigo-400 '  >
+            <Link to='/notifications' className='  ml-8  mt-6 hover:text-indigo-400 '  >
               Notifications
 
             </Link>
-            <button onClick={handleLogout} className='  ml-8  hover:text-indigo-400 '  >
+            <button onClick={handleLogout} className='  ml-8 mt-6  hover:text-indigo-400 '  >
 
               Logout
             </button>
