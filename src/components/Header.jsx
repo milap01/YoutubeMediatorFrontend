@@ -16,7 +16,7 @@ function Header() {
   const isLoggedIn = useRecoilValue(loginAtom);
   const [accessTokenValue, setAccessToken] = useRecoilState(accessToken);
   const [loading, setLoading] = useRecoilState(loadingAtom);
-  const [user,setUser] = useState({})
+  const [user, setUser] = useState({})
   useEffect(function () {
     if (!isLoggedIn) {
       navigateTo('/user/login')
@@ -210,14 +210,19 @@ function Header() {
 
           <div className=' text-white text-lg flex  m-2 ' >
 
-            
-            <Link to='/notifications' className='  ml-8  mt-5 hover:text-indigo-400 '  >
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M21 19v1H3v-1l2-2v-6c0-3.1 2.03-5.83 5-6.71V4a2 2 0 0 1 2-2a2 2 0 0 1 2 2v.29c2.97.88 5 3.61 5 6.71v6zm-7 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2m9.75-17.81l-1.42 1.42A8.982 8.982 0 0 1 21 11h2c0-2.93-1.16-5.75-3.25-7.81M1 11h2c0-2.4.96-4.7 2.67-6.39L4.25 3.19A10.96 10.96 0 0 0 1 11"/></svg>
+            <Link to='/profile' className=' ml-3 mt-2 hover:text-indigo-400 '  >
 
+              Profile
+
+            </Link>
+
+
+            <Link to='/notifications' className='  ml-8  mt-2 hover:text-indigo-400 '  >
+                Notifications
             </Link>
             <button onClick={handleLogout} className='  ml-8  hover:text-indigo-400 '  >
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M16 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v2h-2V5H5v14h9v-2zm2.5-10.5l-1.414 1.414L20.172 11H10v2h10.172l-3.086 3.086L18.5 17.5L24 12z"/></svg>
+                Logout
 
             </button>
 
@@ -237,11 +242,7 @@ function Header() {
 
             </Link>
 
-            <Link to='/profile' className=' ml-3 mt-2 hover:text-indigo-400 '  >
 
-              <img class="w-10 h-10 p-1 rounded ring-gray-300 dark:ring-gray-500" src={user.avatar} alt="Bordered avatar" />
-
-            </Link>
 
 
 
