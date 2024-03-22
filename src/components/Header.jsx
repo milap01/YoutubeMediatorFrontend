@@ -210,11 +210,7 @@ function Header() {
 
           <div className=' text-white text-lg flex  m-2 ' >
 
-            <Link to='/profile' className=' ml-3 mt-5 hover:text-indigo-400 '  >
-
-              <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={user.avatar} alt="Bordered avatar" />
-
-            </Link>
+            
             <Link to='/notifications' className='  ml-8  mt-5 hover:text-indigo-400 '  >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -247,6 +243,12 @@ function Header() {
                   Upload Video
                 </Link> : ""
               }
+
+            </Link>
+
+            <Link to='/profile' className=' ml-3 mt-5 hover:text-indigo-400 '  >
+
+              <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src={user.avatar} alt="Bordered avatar" />
 
             </Link>
 
