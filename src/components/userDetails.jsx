@@ -73,14 +73,15 @@ function UserDetails() {
             </div>
 
 
-            <div class="shadow-lg overflow-hidden mx-auto max-w-md">
+            <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden mx-auto max-w-xl">
                 <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Bio</div>
-                    <p class="text-white text-base">
+                    <div class="font-bold text-2xl mb-2 text-white">Bio</div>
+                    <p class="text-white text-lg">
                         {user.bio}
                     </p>
                 </div>
             </div>
+
 
 
         </>
