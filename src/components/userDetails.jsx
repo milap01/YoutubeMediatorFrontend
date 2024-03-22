@@ -73,7 +73,7 @@ function UserDetails() {
             </div>
 
 
-            <p className='text-white text-center font-mono box-content h-28 w-screen m-8 mt-4 text-wrap'>
+            <p className='text-white text-center font-mono  m-8 mt-4 text-wrap'>
 
                 {user.bio}
 
