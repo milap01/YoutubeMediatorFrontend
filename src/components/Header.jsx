@@ -228,7 +228,11 @@ function Header() {
               </svg>
 
             </Link>
-            <button onClick={handleLogout} className='  ml-8  hover:text-indigo-400 '  >Logout</button>
+            <button onClick={handleLogout} className='  ml-8  hover:text-indigo-400 '  >
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M16 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v2h-2V5H5v14h9v-2zm2.5-10.5l-1.414 1.414L20.172 11H10v2h10.172l-3.086 3.086L18.5 17.5L24 12z"/></svg>
+
+            </button>
 
 
             <Link className=' ml-3  hover:drop-shadow-xl shadow-indigo-300/40 '  >
