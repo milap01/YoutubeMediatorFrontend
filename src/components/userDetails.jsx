@@ -56,30 +56,26 @@ function UserDetails() {
 
         <>
 
-            <div className='flex flex-col items-center mt-28' >
+            <div className='flex flex-col items-center mt-8'>
 
-                <div >
-
-                    <div className=' w-32 mb-6' >
-                        <div>
-                            <img src={user.avatar} className=' w-32 h-32 rounded-full  border-2  border-indigo-300 ' />
-                        </div>
-                        <div className='text-white text-center font-mono mt-4' >
-                            {user.type}
-                        </div>
+                <div className='mb-6'>
+                    <div>
+                        <img src={user.avatar} className='w-32 h-32 rounded-full border-2 border-indigo-300' alt='User Avatar' />
                     </div>
-
+                    <div className='text-white text-center font-mono mt-4'>
+                        {user.type}
+                    </div>
                 </div>
-            </div>
 
-
-            <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden mx-auto max-w-xl">
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-white">Bio</div>
-                    <p class="text-white text-lg">
-                        {user.bio}
-                    </p>
+                <div className="bg-gray-900 shadow-lg rounded-lg overflow-hidden w-full max-w-xl">
+                    <div className="px-6 py-4">
+                        <div className="font-bold text-2xl mb-2 text-white">Bio</div>
+                        <p className="text-white text-lg">
+                            {user.bio}
+                        </p>
+                    </div>
                 </div>
+
             </div>
 
 
