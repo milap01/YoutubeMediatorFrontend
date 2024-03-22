@@ -208,26 +208,14 @@ function Header() {
             </Link>
           </div>
 
-          <div className=' text-white text-lg flex  m-2 ' >
+          <div className=' text-white text-lg m-2 ' >
 
-            <Link to='/profile' className=' ml-3 mt-6 hover:text-indigo-400 '  >
-
-              Profile
-
-            </Link>
+            <Link to='/profile' className=' ml-3 mt-4 hover:text-indigo-400 '  >Profile</Link>
+            <Link to='/notifications' className='  ml-8  mt-4 hover:text-indigo-400 '  >Notifications</Link>
+            <button onClick={handleLogout} className='  ml-8  mt-4 hover:text-indigo-400 '  >Logout</button>
 
 
-            <Link to='/notifications' className='  ml-8  mt-6 hover:text-indigo-400 '  >
-              Notifications
-
-            </Link>
-            <button onClick={handleLogout} className='  ml-8 mt-3  hover:text-indigo-400 '  >
-
-              Logout
-            </button>
-
-
-            <Link className=' ml-3   hover:drop-shadow-xl shadow-indigo-300/40 '  >
+            <Link className=' ml-3 mt-4   hover:drop-shadow-xl shadow-indigo-300/40 '  >
               {
                 type == "CREATOR" ? <button onClick={getCredentials} type="button" className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 rounded-md ">
                   Credentials
@@ -235,7 +223,7 @@ function Header() {
               }
 
               {
-                type == "EDITOR" ? <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2 mt-8 rounded-md ">
+                type == "EDITOR" ? <Link to='/video-upload' className="bg-gradient-to-r from-indigo-600 to-blue-700  p-3 m-2  rounded-md ">
                   Upload Video
                 </Link> : ""
               }
