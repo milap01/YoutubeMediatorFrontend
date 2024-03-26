@@ -25,7 +25,7 @@ function Confirmation() {
                     console.log(response.data)
 
                     setVideo(response.data)
-                    const url = "https://www.youtube.com/watch?v=" + response.data.video_id
+                    const url = "https://www.youtube.com/embed/"+ response.data.video_id
                     console.log(url);
                     setUrl(url)
                 }
