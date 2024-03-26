@@ -108,10 +108,12 @@ function Confirmation() {
 
             <h1 className='text-3xl  font-bold ' >{video?.title}</h1>
 
-            <video key={url} className="h-96 mt-8 rounded-lg" controls>
+            {/* <video key={url} className="h-96 mt-8 rounded-lg" controls>
                 <source src={url} type="video/mp4" />
                 Your browser does not support the video tag.
-            </video>
+            </video> */}
+
+            <iframe width="560" height="315" src={url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
             <p className='mt-8 text-wrap'>
